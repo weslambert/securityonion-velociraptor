@@ -85,3 +85,16 @@ so-filebeat-restart --force
 
 # Restart Velociraptor
 so-velociraptor-restart --force
+
+# Configure user/pass/role
+echo "Waiting for Velociraptor to initialize..."
+sleep 15s
+echo "Please provide an administrative username, then press[ENTER]:"
+read username
+echo "Please provide a password, then press [ENTER]:"
+read -s password
+
+# Configure
+docker exec so-velociraptor /velociraptor/velociraptor --config server.config.yaml user add $username $password --role administrator
+echo
+echo "Done!"
