@@ -29,5 +29,5 @@ so-velociraptor:
       - VELOX_USER=admin
       - VELOX_PASSWORD=admin
       - VELOX_ROLE=administrator
-      - VELOX_SERVER_URL=https://VelociraptorServer:8000/
-      - VELOX_FRONTEND_HOSTNAME=VelociraptorServer
+      - VELOX_SERVER_URL=https://{{ url_base }}:8000/
+      - VELOX_FRONTEND_HOSTNAME={{ url_base }}
