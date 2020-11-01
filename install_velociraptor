@@ -11,10 +11,16 @@ FB_INPUT="yes"
 #cp -av salt/top.sls /opt/so/saltstack/local/salt/top.sls
 
 # Copy salt config
-for i in filebeat firewall velociraptor /nginx/etc /common/tools/sbin; do
+for i in filebeat firewall velociraptor; do
     mkdir -p $i
     cp -av salt/$i* /opt/so/saltstack/local/salt/$i;
 done
+
+# Copy nginx config
+cp salt/nginx/etc/nginx.conf /opt/so/saltstack/local/salt/nginx/etc/nginx.conf
+
+# Copy utility scripts
+cp -av salt/common/tools/sbin/so-velociraptor-* /opt/so/saltstack/default/salt/common/tools/sbin/
 
 # Copy ES Ingest config, Logstash config (if applicable), and template
 if [[ "$FB_INPUT" == "yes" ]]; then
@@ -42,25 +48,27 @@ firewall:
               - portgroups.velociraptor
 EOF
 
+# Add firewall hostgroup for Velociraptor
 /usr/sbin/so-firewall addhostgroup velociraptor
 
 # Restart ES to load new config
 so-elasticsearch-restart --force
 
-# Restart Logstash
+# Restart Logstash to load output
 so-logstash-restart --force
 
-# Restart nginx
+# Restart nginx to load new config
 so-nginx-restart --force
 
-# Common stuff
+# Apply common state to pull in utility scripts
 salt "*" saltutil.kill_all_jobs && salt-call state.apply common
 
-# Apply new Velociraptor config
+# Start Velociraptor
 so-velociraptor-start --force
 
-sleep 60s 
+sleep 45s 
 
+# Adjust Velociraptor config
 CUSTOM_ARTIFACT_DIR="/opt/so/conf/velociraptor/artifact_definitions/Custom/Flows"
 mkdir -p $CUSTOM_ARTIFACT_DIR
 cp velociraptor/artifacts/Custom.Flows.Write $CUSTOM_ARTIFACT_DIR/Write.yaml
