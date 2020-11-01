@@ -1,0 +1,34 @@
+{
+        "description": "velociraptor",
+        "processors": [{
+                        "set": {
+                                "field": "tags",
+                                "value": "velo"
+                        }
+                },
+                { "json":           { "field": "message",                   "target_field": "message2",             "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Architecture",         "target_field": "host.architecture",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.ClientId",         "target_field": "client.id",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.Fqdn",         "target_field": "host.fqdn",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.Hostname",         "target_field": "host.hostname",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.Labels",         "target_field": "client.labels",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.OS",         "target_field": "host.os",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.FlowId",         "target_field": "flow.id",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.Platform",         "target_field": "os.name",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.PlatformVersion",         "target_field": "os.version",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.KernelVersion",         "target_field": "os.kernel",   "ignore_missing": true  } },
+                { "rename":     { "field": "message2.Artifact",              "target_field": "artifact.name", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.User",              "target_field": "user.name", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Uid",              "target_field": "user.id", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Gid",              "target_field": "user.group.id", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Description",              "target_field": "user.description", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Shell",              "target_field": "user.shell", "ignore_failure": true  } },
+                { "rename":     { "field": "message2.Homedir",              "target_field": "user.home", "ignore_failure": true  } },
+                { "split":      { "field": "message2.LastIp",       "separator": ":",                   "ignore_failure": true  } },
+                { "set":        { "field": "client.ip",        "value": "{{ message2.LastIp.0 }}", "ignore_failure": true  } },
+                { "set":        { "field": "dataset",        "value": "artifact", "ignore_failure": true  } },
+                { "date":           { "field": "message2.timstamp",       "target_field": "@timestamp",   "formats": ["ISO8601", "UNIX"], "ignore_failure": true  } },
+                { "remove":     { "if": "ctx.message2?.client?.labels == null", "field": "client.labels", "ignore_failure": true                                                           } },
+                { "pipeline":   { "name": "common"                                                                                                      } }
+        ]
+}
