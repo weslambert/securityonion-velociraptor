@@ -1,3 +1,4 @@
+{%- set url_base = salt['pillar.get']('global:url_base') %}
 velociraptorgroup:
   group.present:
     - name: velociraptor
