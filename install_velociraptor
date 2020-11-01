@@ -19,7 +19,7 @@ done
 # Copy ES Ingest config, Logstash config (if applicable), and template
 if [[ "$FB_INPUT" == "yes" ]]; then
     cp salt/elasticsearch/files/ingest/velociraptor.fb_input /opt/so/saltstack/local/salt/elasticsearch/files/ingest/velociraptor
-    cp salt/logstash/pipelines/config/custom/9501_output_velociraptor.conf.jinja /opt/so/saltstack/local/salt/logstash/pipelines/config/custom/9501_output_velocirapto.conf.jinja
+    cp salt/logstash/pipelines/config/custom/9501_output_velociraptor.conf.jinja /opt/so/saltstack/local/salt/logstash/pipelines/config/custom/9501_output_velociraptor.conf.jinja
 else
     cp salt/elasticsearch/files/ingest/velociraptor.es_input /opt/so/saltstack/local/salt/elasticsearch/files/ingest/velociraptor
 fi
