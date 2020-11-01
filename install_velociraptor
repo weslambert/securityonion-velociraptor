@@ -10,11 +10,15 @@ FB_INPUT="yes"
 # Copy top file
 #cp -av salt/top.sls /opt/so/saltstack/local/salt/top.sls
 
-# Copy salt config
-for i in filebeat firewall velociraptor; do
-    mkdir -p $i
-    cp -av salt/$i* /opt/so/saltstack/local/salt/$i;
-done
+# Copy Velociraptor config
+mkdir -p /opt/so/saltstack/local/salt/velociraptor
+cp -av salt/veloiciraptor/* /opt/so/saltstack/local/salt/velociraptor
+
+# Copy firewall config
+cp -av salt/firewall/* /opt/so/saltstack/local/salt/firewall
+
+# Copy Filebeat config
+cp -av salt/filebeat/* /opt/so/saltstack/local/salt/filebeat
 
 # Copy nginx config
 cp salt/nginx/etc/nginx.conf /opt/so/saltstack/local/salt/nginx/etc/nginx.conf
