@@ -5,17 +5,32 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+FB_INPUT="yes"
+
 # Copy top file
-cp -av salt/top.sls /opt/so/saltstack/local/salt/top.sls
+#cp -av salt/top.sls /opt/so/saltstack/local/salt/top.sls
 
 # Copy salt config
-for i in elasticsearch firewall velociraptor /nginx/etc /common/tools/sbin; do
+for i in firewall velociraptor /nginx/etc /common/tools/sbin; do
     mkdir -p $i
     cp -av salt/$i* /opt/so/saltstack/local/salt/$i;
 done
 
-# Copy pillar stuff
-cp -av pillar/elasticsearch/* /opt/so/saltstack/local/pillar/elasticsearch
+# Copy ES Ingest config, Logstash config (if applicable), and template
+if [[ "$FB_INPUT" == "yes" ]]; then
+    cp salt/elasticsearch/files/ingest/velociraptor.fb_input /opt/so/saltstack/local/salt/elasticsearch/files/ingest/velociraptor
+    cp salt/logstash/pipelines/config/custom/9501_output_velocirapto.conf.jinja /opt/so/saltstack/local/salt/logstash/pipelines/config/custom/9501_output_velocirapto.conf.jinja
+else
+    cp salt/elasticsearch/files/ingest/velociraptor.es_input /opt/so/saltstack/local/salt/elasticsearch/files/ingest/velociraptor
+fi
+
+cp salt/elasticsearch/templates/custom/so-velociraptor-template.json /opt/so/saltstack/local/salt/elasticsearch/templates/custom/so-velociraptor-template.json
+
+
+# Copy pillar stuff for ES and Logstash config
+for i in elasticsearch logstash; do
+    cp -av pillar/$i/* /opt/so/saltstack/local/pillar/$i
+done
 
 # Restart ES to load new config
 so-elasticsearch-restart --force
