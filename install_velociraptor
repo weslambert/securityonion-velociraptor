@@ -82,3 +82,6 @@ chmod 640 /opt/so/conf/velociraptor/config/server_monitoring.json.db
 
 # Restart Filebeat
 so-filebeat-restart --force
+
+# Restart Velociraptor
+so-velociraptor-restart --force
