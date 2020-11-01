@@ -12,7 +12,7 @@ FB_INPUT="yes"
 
 # Copy Velociraptor config
 mkdir -p /opt/so/saltstack/local/salt/velociraptor
-cp -av salt/veloiciraptor/* /opt/so/saltstack/local/salt/velociraptor
+cp -av salt/velociraptor/* /opt/so/saltstack/local/salt/velociraptor
 
 # Copy firewall config
 cp -av salt/firewall/* /opt/so/saltstack/local/salt/firewall
