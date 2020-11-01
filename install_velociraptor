@@ -50,9 +50,6 @@ so-elasticsearch-restart --force
 # Restart Logstash
 so-logstash-restart --force
 
-# Restart Filebeat
-so-filebeat-restart --force
-
 # Restart nginx
 so-nginx-restart --force
 
@@ -61,3 +58,8 @@ salt "*" saltutil.kill_all_jobs & salt-call state.apply common
 
 # Apply new Velociraptor config
 so-velociraptor-start --force
+
+# Restart Filebeat
+so-filebeat-restart --force
+
+
