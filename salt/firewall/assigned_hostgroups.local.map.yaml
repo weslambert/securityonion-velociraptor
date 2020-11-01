@@ -18,7 +18,16 @@ role:
   helixsensor:
   import:
   manager:
+    velociraptor:
+            portgroups:
+              - {{ portgroups.velociraptor }}
   managersearch:
+    velociraptor:
+            portgroups:
+              - {{ portgroups.velociraptor }}
   standalone:
+    velociraptor:
+            portgroups:
+              - {{ portgroups.velociraptor }}
   searchnode:
   sensor:
