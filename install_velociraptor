@@ -54,7 +54,7 @@ so-logstash-restart --force
 so-nginx-restart --force
 
 # Common stuff
-salt "*" saltutil.kill_all_jobs & salt-call state.apply common
+salt "*" saltutil.kill_all_jobs && salt-call state.apply common
 
 # Apply new Velociraptor config
 so-velociraptor-start --force
