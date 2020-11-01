@@ -72,6 +72,7 @@ sleep 45s
 CUSTOM_ARTIFACT_DIR="/opt/so/conf/velociraptor/artifact_definitions/Custom/Flows"
 mkdir -p $CUSTOM_ARTIFACT_DIR
 cp velociraptor/artifacts/Custom.Flows.Write $CUSTOM_ARTIFACT_DIR/Write.yaml
+chmod 700 $CUSTOM_ARTIFACT_DIR/Write.yaml
 cp velociraptor/server_monitoring.json.db /opt/so/conf/velociraptor/config/
 chmod 640 /opt/so/conf/velociraptor/config/server_monitoring.json.db
 
