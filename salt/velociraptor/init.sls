@@ -18,7 +18,7 @@ velociraptor:
 
 so-velociraptor:
   docker_container.running:
-    - image: wlambert/velociraptor
+    - image: wlambert/so-velociraptor
     - binds:
       - /opt/so/conf/velociraptor:/velociraptor:rw
     - port_bindings:
