@@ -47,6 +47,8 @@ EOF
 CUSTOM_ARTIFACT_DIR="/opt/so/conf/velociraptor/artifact_definitions/Custom/Flows"
 mkdir -p $CUSTOM_ARTIFACT_DIR
 cp salt/velociraptor/artifacts/Custom.Flows.Write $CUSTOM_ARTIFACT_DIR/Write.yaml
+cp salt/velociraptor/server_monitoring.json.db /opt/so/conf/velociraptor/config/
+chmod 640 /opt/so/conf/velociraptor/config/server_monitoring.json.db
 
 # Restart ES to load new config
 so-elasticsearch-restart --force
