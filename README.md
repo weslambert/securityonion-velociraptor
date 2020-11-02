@@ -1,5 +1,6 @@
 # securityonion-velociraptor
 Run Velociraptor on [Security Onion (2)](https://github.com/Security-Onion-Solutions/securityonion)
+
 ### Overview
 This script and the accompanying components will setup Velociraptor on [Security Onion (2)](https://github.com/Security-Onion-Solutions/securityonion), and output from client artifact collections/flows will be automatically streamed to the Elastic Stack for correlation with other events.
 
@@ -9,6 +10,10 @@ Currently, Velociraptor events will be displayed within Hunt and Kibana with as 
 `event.dataset: artifact`
 
 It is planned to migrate all artifact fields/output to [ECS](https://www.elastic.co/guide/en/ecs/current/index.html)-compliance as the integration continues to mature.  Velociraptor ECS mappings will be tracked in a separate repo ([velociraptor-ecs](https://github.com/weslambert/velociraptor-ecs)). 
+
+### Notes
+- This is NOT an officially supported Security Onion integration -- please use it at your own risk.
+- This script and the accompanying components have only been tested on a standalone node, although it should work fine for a manager, or managersearch node.
 
 ### Installation
 To get started, clone the repo, then run the `install_velociraptor` script:
@@ -39,7 +44,3 @@ To add a firewall exception for a particular IP or range of IPs, you can use the
 Original client binaries and repacked client binaries can be found in `/opt/so/conf/velociraptor/clients`.
 
 The client configuration file can be found in `/opt/so/conf/velociraptor`.
-
-### Notes
-- This is NOT an officially supported Security Onion integration.
-- This script and the accompanying components have only been tested on a Standalone node.
