@@ -112,6 +112,7 @@ base:
     {%- if STRELKA %}
     - strelka
     {%- endif %}
+    - velociraptor
     - filebeat
     - curator
     - elastalert
@@ -135,7 +136,6 @@ base:
     {%- endif %}
     {%- if DOMAINSTATS != 0 %}
     - domainstats
-    - velociraptor
     {%- endif %}
     - docker_clean
 
@@ -166,6 +166,7 @@ base:
     - redis
     - kibana
     - elastalert
+    - velociraptor
     - filebeat
     - utility
     - schedule
@@ -223,6 +224,7 @@ base:
     {%- if STRELKA %}
     - strelka
     {%- endif %}
+    - velociraptor
     - filebeat
     - curator
     - elastalert
@@ -348,6 +350,7 @@ base:
     - curator
     - kibana
     - elastalert
+    - velociraptor
     - filebeat
     - utility
     - schedule
