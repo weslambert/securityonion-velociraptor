@@ -1,6 +1,8 @@
 # securityonion-velociraptor
 Run Velociraptor on [Security Onion (2)](https://github.com/Security-Onion-Solutions/securityonion)
 
+![image](https://user-images.githubusercontent.com/16829864/97827312-e4d60900-1c91-11eb-9923-8899cf6ccba4.png)
+
 ### Overview
 This script and the accompanying components will setup Velociraptor on [Security Onion (2)](https://github.com/Security-Onion-Solutions/securityonion), and output from client artifact collections/flows will be automatically streamed to the Elastic Stack for correlation with other events.
 
