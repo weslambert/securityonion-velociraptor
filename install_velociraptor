@@ -7,9 +7,6 @@ fi
 
 FB_INPUT="yes"
 
-# Copy top file
-#cp -av salt/top.sls /opt/so/saltstack/local/salt/top.sls
-
 # Copy Velociraptor config
 mkdir -p /opt/so/saltstack/local/salt/velociraptor
 cp -av salt/velociraptor/* /opt/so/saltstack/local/salt/velociraptor
@@ -70,6 +67,7 @@ salt "*" saltutil.kill_all_jobs && salt-call state.apply common
 # Start Velociraptor
 so-velociraptor-start --force
 
+echo "Waiting..."
 sleep 45s 
 
 # Adjust Velociraptor config
@@ -96,5 +94,8 @@ read -s password
 
 # Configure
 docker exec so-velociraptor /velociraptor/velociraptor --config server.config.yaml user add $username $password --role administrator
-echo
+
+# Copy top file
+cp salt/top.sls /opt/so/saltstack/local/salt/top.sls
+
 echo "Done!"
