@@ -20,6 +20,9 @@ cp -av salt/filebeat/* /opt/so/saltstack/local/salt/filebeat
 # Copy nginx config
 cp salt/nginx/etc/nginx.conf /opt/so/saltstack/local/salt/nginx/etc/nginx.conf
 
+# Copy SOC config
+cp salt/soc/files/soc/hunt.actions.json /opt/so/saltstack/local/salt/soc/files/soc/hunt.actions.json
+
 # Copy utility scripts
 cp -av salt/common/tools/sbin/so-velociraptor-* /opt/so/saltstack/default/salt/common/tools/sbin/
 
@@ -57,6 +60,9 @@ so-elasticsearch-restart --force
 
 # Restart Logstash to load output
 so-logstash-restart --force
+
+# Restart SOC
+so-soc-restart --force
 
 # Restart nginx to load new config
 so-nginx-restart --force
