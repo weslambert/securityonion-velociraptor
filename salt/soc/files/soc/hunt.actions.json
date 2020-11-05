@@ -1,0 +1,8 @@
+[
+  { "name": "actionHunt", "description": "actionHuntHelp", "icon": "fa-crosshairs", "link": "/#/hunt?q=\"{value}\" | groupby event.module event.dataset", "target": "" },
+  { "name": "actionPcap", "description": "actionPcapHelp", "icon": "fa-stream", "link": "/joblookup?esid={eventId}", "target": "" },
+  { "name": "actionGoogle", "description": "actionGoogleHelp", "icon": "fab fa-google", "link": "https://www.google.com/search?q={value}", "target": "_blank" },
+  { "name": "actionVirusTotal", "description": "actionVirusTotalHelp", "icon": "fa-external-link-alt", "link": "https://www.virustotal.com/gui/search/{value}", "target": "_blank" },
+  { "name": "Unfurl", "description": "Unfurl URL Breakdown", "icon": "fa-external-link-alt", "link": "https://dfir.blog/unfurl/?url={value}", "target": "_blank" },
+  { "name": "Velociraptor", "description": "Velociraptor Client Pivot", "icon": "fa-external-link-alt", "link": "/velociraptor/app/index.html?#/search/{value}", "target": "_blank" }
+]
