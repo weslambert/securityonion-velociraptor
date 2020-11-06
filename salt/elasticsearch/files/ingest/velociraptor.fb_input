@@ -29,6 +29,7 @@
                 { "set":        { "field": "dataset",        "value": "artifact", "ignore_failure": true  } },
                 { "date":           { "field": "message2.timstamp",       "target_field": "@timestamp",   "formats": ["ISO8601", "UNIX"], "ignore_failure": true  } },
                 { "remove":     { "if": "ctx.message2?.client?.labels == null", "field": "client.labels", "ignore_failure": true                                                           } },
+                { "rename":     { "field": "message2",              "target_field": "velociraptor", "ignore_failure": true  } },
                 { "pipeline":   { "name": "common"                                                                                                      } }
         ]
 }
