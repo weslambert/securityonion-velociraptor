@@ -3,7 +3,7 @@
         "processors": [{
                         "set": {
                                 "field": "tags",
-                                "value": "velo"
+                                "value": "velociraptor"
                         }
                 },
                 { "json":           { "field": "message",                   "target_field": "message2",             "ignore_failure": true  } },
