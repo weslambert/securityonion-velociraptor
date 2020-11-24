@@ -15,9 +15,6 @@ It is planned to migrate all artifact fields/output to [ECS](https://www.elastic
 
 ### Notes
 - This is NOT an officially supported Security Onion integration -- please use it at your own risk.
-
-```
-
 - This script and the accompanying components have only been tested on a standalone node, although it should work fine for a manager, or managersearch node.
 
 ### Installation
