@@ -15,12 +15,7 @@ It is planned to migrate all artifact fields/output to [ECS](https://www.elastic
 
 ### Notes
 - This is NOT an officially supported Security Onion integration -- please use it at your own risk.
-- This script currently integrates with the `dev` branch of the Security Onion Github repo. Until merged to master, you will want to build from this branch if you want to test the integration.  You can do this by performing a network install on Centos 7 or Ubuntu 18, then cloning the `dev` branch instead of master before running setup:
 
-```
-git clone -b dev https://github.com/security-onion-solutions/securityonion`
-cd securityonion
-sudo bash so-setup-network
 ```
 
 - This script and the accompanying components have only been tested on a standalone node, although it should work fine for a manager, or managersearch node.
