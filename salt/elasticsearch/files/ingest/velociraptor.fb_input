@@ -1,5 +1,5 @@
 {
-        "description": "velociraptor",
+        "description": "Velociraptor",
         "processors": [{
                         "set": {
                                 "field": "tags",
@@ -25,8 +25,11 @@
                 { "rename":     { "field": "message2.Shell",              "target_field": "user.shell", "ignore_failure": true  } },
                 { "rename":     { "field": "message2.Homedir",              "target_field": "user.home", "ignore_failure": true  } },
                 { "split":      { "field": "message2.LastIp",       "separator": ":",                   "ignore_failure": true  } },
+                { "set":         { "field": "event.severity", "value": 4, "override": true }  },
                 { "set":        { "field": "client.ip",        "value": "{{ message2.LastIp.0 }}", "ignore_failure": true  } },
                 { "set":        { "field": "dataset",        "value": "artifact", "ignore_failure": true  } },
+                { "set":        { "if": "ctx.message2?.Rule != null",  "field": "dataset",        "value": "alert", "ignore_failure": true  } },
+                { "rename":     { "if": "ctx.message2?.Rule != null", "field": "message2.Rule",              "target_field": "rule.name", "ignore_failure": true  } },
                 { "date":           { "field": "message2.timstamp",       "target_field": "@timestamp",   "formats": ["ISO8601", "UNIX"], "ignore_failure": true  } },
                 { "remove":     { "if": "ctx.message2?.client?.labels == null", "field": "client.labels", "ignore_failure": true                                                           } },
                 { "rename":     { "field": "message2",              "target_field": "velociraptor", "ignore_failure": true  } },
