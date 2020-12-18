@@ -84,6 +84,10 @@ chmod 700 $CUSTOM_ARTIFACT_DIR/Write.yaml
 cp velociraptor/server_monitoring.json.db /opt/so/conf/velociraptor/config/
 chmod 640 /opt/so/conf/velociraptor/config/server_monitoring.json.db
 
+# Re-generate frontend cert
+mv /opt/so/conf/velociraptor/server.config.yaml /tmp/server.config.yaml
+/opt/so/conf/velociraptor/velociraptor --config /tmp/server.config.yaml config rotate_key > /opt/so/conf/velociraptor/server.config.yaml
+
 # Restart Filebeat
 so-filebeat-restart --force
 
