@@ -35,6 +35,10 @@ else
 fi
 cp salt/elasticsearch/templates/custom/so-velociraptor-template.json /opt/so/saltstack/local/salt/elasticsearch/templates/custom/so-velociraptor-template.json
 
+# Modify templates so Velociraptor will inherit mappings
+cp /opt/so/saltstack/default/salt/elasticsearch/templates/so/so-common-template.json /opt/so/saltstack/local/salt/elasticsearch/templates/so/so-common-template.json
+sed -i 's|\"so-playbook-\*\"|\"so-playbook-*\",\ \"so-velociraptor-\*\"|' /opt/so/saltstack/local/salt/elasticsearch/templates/so/so-common-template.json
+
 # Copy pillar stuff for ES and Logstash config
 for i in elasticsearch logstash; do
     cp -av pillar/$i/* /opt/so/saltstack/local/pillar/$i
