@@ -10,6 +10,8 @@ output {
       pipeline => "velociraptor"
       hosts => "{{ ES }}"
       index => "so-velociraptor"
+      ssl => true
+      ssl_certificate_verification => false
     }
   }
 }
