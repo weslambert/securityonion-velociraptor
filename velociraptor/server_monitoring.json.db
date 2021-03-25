@@ -3,7 +3,12 @@
   "Server.Monitor.Health",
   "Custom.Flows.Write"
  ],
- "parameters": {
+ "specs": [
+  {
+   "artifact": "Server.Monitor.Health",
+   "parameters": {
 
- }
+   }
+  }
+ ]
 }
