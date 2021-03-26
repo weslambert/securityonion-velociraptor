@@ -27,6 +27,6 @@
               "https://www.virustotal.com/gui/search/{value}" ]},
   { "name": "Velociraptor", "description": "Velociraptor Client Pivot", "icon": "fa-external-link-alt", "target": "_blank",
             "links": [
-              "/velociraptor/app/index.html?#/search/{client.id}"
+              "/velociraptor/app/index.html?#/search/{:client.id}"
             ]}
 ]
