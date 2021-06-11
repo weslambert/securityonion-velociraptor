@@ -57,7 +57,7 @@ firewall:
 EOF
 
 #adding velociraptor link on SOC
-echo ,{"name": "Velociraptor", "description": "toolVelociraptorHelp", "icon": "fa-external-link-alt", "target": "so-velociraptor", "link": "https://localhost/velociraptor/"} >> /opt/so/saltstack/default/salt/soc/files/soc/tools.json
+echo ,{"name": "Velociraptor", "description": "toolVelociraptorHelp", "icon": "fa-external-link-alt", "target": "so-velociraptor", "link": "/velociraptor/"} >> /opt/so/saltstack/default/salt/soc/files/soc/tools.json
 
 # Add firewall hostgroup for Velociraptor
 /usr/sbin/so-firewall addhostgroup velociraptor
