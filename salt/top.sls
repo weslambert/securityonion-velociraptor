@@ -359,7 +359,7 @@ base:
     {%- if FILEBEAT %}
     - filebeat
     {%- endif %}
-    - veloiraptor
+    - velociraptor
     - utility
     - schedule
     {%- if FLEETMANAGER or FLEETNODE %}
